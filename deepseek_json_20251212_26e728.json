@@ -1,0 +1,84 @@
+{
+  "name": "military-project-management",
+  "version": "1.0.0",
+  "description": "军工科研流程管理及进度监控系统",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "node scripts/build.js",
+    "package": "node scripts/package.js",
+    "installer": "electron-builder --win --x64",
+    "dev": "electron . --debug"
+  },
+  "build": {
+    "appId": "com.military.project.manager",
+    "productName": "军工项目管理",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/*.iml",
+      "!.gitignore",
+      "!.gitattributes"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "resources/icon.ico",
+      "publisherName": "国防科技工业局"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "军工项目管理",
+      "installerIcon": "resources/installer.ico",
+      "uninstallerIcon": "resources/uninstaller.ico",
+      "license": "LICENSE.txt"
+    },
+    "extraResources": [
+      {
+        "from": "resources/",
+        "to": "resources/"
+      }
+    ]
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.6",
+    "express": "^4.18.2",
+    "lowdb": "^6.0.1",
+    "uuid": "^9.0.0",
+    "pdf-preview-generator": "^1.0.2",
+    "office-preview": "^2.0.1",
+    "electron-store": "^8.1.0",
+    "moment": "^2.29.4",
+    "antd": "^5.8.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.0",
+    "@ant-design/icons": "^5.2.0"
+  },
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-builder": "^24.4.0",
+    "@electron/rebuild": "^3.2.10",
+    "electron-packager": "^17.1.2"
+  },
+  "keywords": [
+    "军工",
+    "项目管理",
+    "科研流程",
+    "文件管理"
+  ],
+  "author": "国防科技工业局",
+  "license": "MIT"
+}
